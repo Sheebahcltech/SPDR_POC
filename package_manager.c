@@ -169,8 +169,7 @@ void resetVisits()
 int detectCycleDFS(Package *pkg)
 {
 	Dependency *dep;
-	Package *nextPkg;
-
+    Package *nextPkg
 	pkg->visit = GRAY;
 
 	dep = pkg->deps;
@@ -206,15 +205,13 @@ int detectCycleDFS(Package *pkg)
 void topoDFS(Package *pkg)
 {
 	Dependency *dep;
-	Package *nextPkg;
- 
 	pkg->visit = GRAY;
  
 	dep = pkg->deps;
  
 	while(dep != NULL)
 	{
-		nextPkg = findPackage(dep->name);
+		Package *nextPkg = findPackage(dep->name);
  
 		if(nextPkg != NULL &&
 		        nextPkg->visit == WHITE)
@@ -377,8 +374,6 @@ void deletePackage(char name[])
     Package *hashCurrent;
     Package *hashPrevious;
  
-    Dependency *dep;
- 
     unsigned int index;
  
     current = head;
@@ -443,7 +438,7 @@ void deletePackage(char name[])
  
     while(current->deps != NULL)
     {
-        dep = current->deps;
+       Dependency *dep = current->deps;
         current->deps = current->deps->next;
         free(dep);
     }
@@ -557,7 +552,7 @@ void showDependencies(char packageName[])
 }
 
 //remove dependency function
-void removeDependency(char packageName[], char dependencyName[])
+void removeDependency(char packageName[], const char dependencyName[])
 {
 	Package *pkg;
 	Dependency *current;
