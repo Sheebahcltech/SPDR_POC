@@ -169,14 +169,13 @@ void resetVisits()
 int detectCycleDFS(Package *pkg)
 {
 	Dependency *dep;
-    Package *nextPkg
 	pkg->visit = GRAY;
 
 	dep = pkg->deps;
 
 	while(dep != NULL)
 	{
-		nextPkg = findPackage(dep->name);
+		Package *nextPkg = findPackage(dep->name);
 
 		if(nextPkg != NULL)
 		{
