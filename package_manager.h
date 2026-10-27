@@ -64,7 +64,7 @@ void addDependency(char packageName[],
                    int patch);
 
 void removeDependency(char packageName[],
-                      char dependencyName[]);
+                     const char dependencyName[]);
 
 void showDependencies(char packageName[]);
 
